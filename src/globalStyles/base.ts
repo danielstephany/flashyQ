@@ -8,6 +8,10 @@ export const base = `
         font-family: "Roboto", sans-serif;
     }
 
+    body {
+        position: relative;
+    }
+
     img {
         max-width: 100%;
     }

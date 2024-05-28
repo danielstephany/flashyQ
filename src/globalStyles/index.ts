@@ -1,10 +1,12 @@
 import { createGlobalStyle } from "styled-components"
 import { noralize } from "./normalize.ts"
 import { base } from "./base.ts"
+import { type } from "./type.ts"
 
-const globalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     ${noralize}
     ${base}
+    ${type}
 `
 
-export default globalStyles
+export default GlobalStyles

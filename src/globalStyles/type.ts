@@ -1,0 +1,7 @@
+export const type = `
+    .poetsen-one-regular {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+`
