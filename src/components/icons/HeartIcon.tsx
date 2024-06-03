@@ -8,7 +8,6 @@ interface iProps {
 }
 
 const HeartIconComp: React.ElementType = ({ className, pulse, pulseShrink }: iProps) => {
-    console.log(pulse)
     return (
         <svg className={className} fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
