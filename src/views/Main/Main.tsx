@@ -28,7 +28,7 @@ const Main = () => {
                     <textarea></textarea>
                 </Box>
             </Modal>
-            <GuessSlots />
+            <GuessSlots wordString="Big  Bear  "/>
         </MainLayout>
     )
 }

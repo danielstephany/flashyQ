@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
 import GuessSlotItem from './GuessSlotItem.tsx'
 
@@ -16,7 +16,14 @@ const GuessSlotsSection = styled.div`
     margin: 16px;
 `
 
-const GuessSlots = () => {
+const parseWordString = (str: string) => {
+    return str.split(" ").map((item: string) => item.trim()).filter((item: string) => !!item)
+}
+
+const GuessSlots: React.ElementType = ({wordString}) => {
+    const stringArray = useRef(parseWordString(wordString))
+
+    console.log(stringArray)
 
     return (
         <GuessSlotsContainer>
