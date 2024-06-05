@@ -10,11 +10,11 @@ interface iProps {
 const MainLayoutComp: React.ElementType = ({
     children, 
     className
-}) => {
+}: iProps) => {
 
     return (
         <div className={className}>
-            <MainHeader />
+            <MainHeader/>
             {children}
         </div>
     )
