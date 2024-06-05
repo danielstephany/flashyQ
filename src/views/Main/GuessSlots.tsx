@@ -23,8 +23,6 @@ const parseWordString = (str: string) => {
 const GuessSlots: React.ElementType = ({wordString}) => {
     const stringArray = useRef(parseWordString(wordString))
 
-    console.log(stringArray)
-
     return (
         <GuessSlotsContainer>
             <GuessSlotsSection>
