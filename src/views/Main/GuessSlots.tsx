@@ -1,4 +1,5 @@
 import React, {useRef} from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import GuessSlotItem from './GuessSlotItem.tsx'
 
@@ -20,31 +21,41 @@ const parseWordString = (str: string) => {
     return str.split(" ").map((item: string) => item.trim()).filter((item: string) => !!item)
 }
 
-const GuessSlots: React.ElementType = ({wordString}) => {
+interface iGuessSlotsProps {
+    wordString: string,
+    guessSet: Set<string>
+}
+
+const GuessSlots: React.ElementType = ({ wordString, guessSet }: iGuessSlotsProps) => {
     const stringArray = useRef(parseWordString(wordString))
 
-    console.log(stringArray)
+    const buildGuessSlots = (word: string) => (
+        Array.from(word).map((letter: string) => {
+            const isActive = letter ? guessSet.has(letter.toLowerCase()) : false
+            return <GuessSlotItem active={isActive} >{letter}</GuessSlotItem>
+        })
+    )
+
+    const buildGuessSlotsSection = (wordArray: string[]) => {
+        return wordArray.map((word: string) => {
+            return (
+                <GuessSlotsSection>                    
+                    {buildGuessSlots(word)}
+                </GuessSlotsSection>
+            )
+        })
+    }
 
     return (
         <GuessSlotsContainer>
-            <GuessSlotsSection>
-                <GuessSlotItem active={false}>P</GuessSlotItem>
-                <GuessSlotItem active={true}>u</GuessSlotItem>
-                <GuessSlotItem>r</GuessSlotItem>
-                <GuessSlotItem>p</GuessSlotItem>
-                <GuessSlotItem>l</GuessSlotItem>
-                <GuessSlotItem>e</GuessSlotItem>
-            </GuessSlotsSection>
-            <GuessSlotsSection>
-                <GuessSlotItem>M</GuessSlotItem>
-                <GuessSlotItem>a</GuessSlotItem>
-                <GuessSlotItem>r</GuessSlotItem>
-                <GuessSlotItem>b</GuessSlotItem>
-                <GuessSlotItem>l</GuessSlotItem>
-                <GuessSlotItem>e</GuessSlotItem>
-            </GuessSlotsSection>
+            {buildGuessSlotsSection(stringArray.current)}
         </GuessSlotsContainer>
     )
+}
+
+GuessSlots.propTypes = {
+    wordString: PropTypes.arrayOf(PropTypes.string).isRequired,
+    guessSet: PropTypes.object.isRequired
 }
 
 export default GuessSlots

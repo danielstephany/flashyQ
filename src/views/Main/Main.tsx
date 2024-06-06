@@ -28,7 +28,7 @@ const Main = () => {
                     <textarea></textarea>
                 </Box>
             </Modal>
-            <GuessSlots wordString="Big  Bear  "/>
+            <GuessSlots wordString="Big  Bear  Wiggles" guessSet={new Set(["b", "a", "w"])}/>
         </MainLayout>
     )
 }
