@@ -3,6 +3,7 @@ import MainLayout from '@src/components/layouts/MainLayout.tsx'
 import Modal from '@src/components/modules/Modal/index.tsx'
 import styled from 'styled-components'
 import GuessSlots from './GuessSlots/index.tsx'
+import LetterList from './LetterList/LetterList.tsx'
 
 const Box = styled.div`
     height: 500px;
@@ -11,6 +12,7 @@ const Box = styled.div`
 `
 
 const Main = () => {
+    const [selections, setSelections] = useState(new Map())
     const [open, setOpen] = useState(false)
 
     const handleClick = () => {
@@ -29,6 +31,7 @@ const Main = () => {
                 </Box>
             </Modal>
             <GuessSlots wordString="Big  Bear  Wiggles" guessSet={new Set(["b", "a", "w"])}/>
+            <LetterList selections={selections} setSelections={setSelections} />
         </MainLayout>
     )
 }
