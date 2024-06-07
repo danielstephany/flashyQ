@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import MainLayout from '@src/components/layouts/MainLayout.tsx'
 import Modal from '@src/components/modules/Modal/index.tsx'
 import styled from 'styled-components'
-import GuessSlots from './GuessSlots.tsx'
+import GuessSlots from './GuessSlots/index.tsx'
 
 const Box = styled.div`
     height: 500px;
