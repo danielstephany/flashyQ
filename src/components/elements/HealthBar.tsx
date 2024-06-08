@@ -31,8 +31,8 @@ const HealthBar = styled(HealthBarComp)`
         height: 100%;
         background-color: #070b41;
         position: absolute;
-        right: ${({ healthSlots, currentSlot }) => 100 * (currentSlot / healthSlots)}%;
-        transition: 0.5s ease right;
+        left: calc(${({ healthSlots, currentSlot }) => 100 * (currentSlot / healthSlots)}% - 100%);
+        transition: 0.5s ease;
     }
 ` as typeof HealthBarComp
 

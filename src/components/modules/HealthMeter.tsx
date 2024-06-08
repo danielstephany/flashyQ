@@ -35,7 +35,7 @@ const HealthMeterComp: React.ElementType = ({ className, currentSlot }: iProps) 
                 <HealthBar healthSlots={5} currentSlot={currentSlot} />
             </div>
             <div className="health__icon">
-                <HeartIcon pulse={pulse} pulseShrink={5 === currentSlot}/>
+                <HeartIcon pulse={pulse} pulseShrink={0 === currentSlot}/>
             </div>
         </div>
     )

@@ -23,16 +23,16 @@ const parseWordString = (str: string) => {
 
 interface iGuessSlotsProps {
     wordString: string,
-    guessSet: Set<string>
+    selections: Set<string>
 }
 
-const GuessSlots: React.ElementType = ({ wordString, guessSet }: iGuessSlotsProps) => {
+const GuessSlots: React.ElementType = ({ wordString, selections }: iGuessSlotsProps) => {
     const stringArray = useRef(parseWordString(wordString))
 
     const buildGuessSlots = (word: string) => (
         Array.from(word).map((letter: string) => {
-            const isActive = letter ? guessSet.has(letter.toLowerCase()) : false
-            return <GuessSlotItem active={isActive} >{letter}</GuessSlotItem>
+            const isActive = letter ? selections.has(letter.toLowerCase()) : false
+            return <GuessSlotItem active={isActive} >{letter.toUpperCase()}</GuessSlotItem>
         })
     )
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import MainHeader from '@src/components/modules/MainHeader.tsx'
 
 interface iProps {
     children: React.ReactNode,
@@ -14,7 +13,6 @@ const MainLayoutComp: React.ElementType = ({
 
     return (
         <div className={className}>
-            <MainHeader/>
             {children}
         </div>
     )

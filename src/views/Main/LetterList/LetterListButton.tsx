@@ -27,6 +27,7 @@ const LetterListButton = styled(LetterListButtonComp)`
     &:disabled {
         opacity: 0.5;
         background-color: #dbd8fc;
+        cursor: not-allowed;
     }
     &:hover {
         background-color: #dbd8fc;

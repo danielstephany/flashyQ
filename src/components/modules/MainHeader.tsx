@@ -3,14 +3,13 @@ import styled from 'styled-components'
 import HealthMeter from '@src/components/modules/HealthMeter.tsx'
 import Button from "@src/components/controls/Button.tsx"
 
-const MainHeaderComp: React.ElementType = ({className}) => {
-    const [slot, setSlot] = useState<number>(5)
+const MainHeaderComp: React.ElementType = ({ className, currentSlot }) => {
 
     return (
         <div className={className}>
             <div className='main-header__content'>
                 <Button component="a" href="#">Restart</Button>
-                <HealthMeter currentSlot={slot} />
+                <HealthMeter currentSlot={currentSlot} />
             </div>
         </div>
     )
