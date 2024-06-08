@@ -9,7 +9,7 @@ const GuessSlotsContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
 `
 
 const GuessSlotsSection = styled.div`

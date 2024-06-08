@@ -15,7 +15,7 @@ const Box = styled.div`
 const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(5)
-    const [answer, setAnswer] = useState("Big  Bear  Wiggles")
+    const [answer, setAnswer] = useState("Big  Bear")
     const [open, setOpen] = useState(false)
 
     const handleClick = () => {
@@ -23,7 +23,7 @@ const Main = () => {
     }
 
     const handleSelection = (value: string) => (e: MouseEvent) => {
-        if (answer.indexOf(value) < 0){
+        if (answer.toLowerCase().indexOf(value) < 0){
             setHealth(health - 1)
         }
         if (!selections.has(value)) {
