@@ -1,16 +1,22 @@
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import LetterListButton from "./LetterListButton.tsx"
 
-const LetterListComp: React.ElementType = ({ className, handleSelection, selections}) => {
+const LetterListComp: React.ElementType = ({ 
+    className, 
+    handleSelection, 
+    selections,
+    isGameOver
+}) => {
     const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
      const displayLetters = () => {
-         return letters.map(letter => {
+         return letters.map((letter, i) => {
           return (
             <LetterListButton 
+                key={i}
                 onClick={handleSelection(letter)}
-                disabled={selections.has(letter)}
+                disabled={selections.has(letter) || isGameOver}
             >{letter.toUpperCase()}</LetterListButton>
             )
         })

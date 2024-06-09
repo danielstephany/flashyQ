@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 interface iProps { 
@@ -26,7 +26,7 @@ const GuessSlotItemContent = styled(GuessSlotItemContentComp)`
     transition: opacity 0.5s ease, transform 0.5s ease-out;
 `
 
-const GuessSlotItemComp: React.ElementType = ({ className, children, letter, active, ...others}) => {
+const GuessSlotItemComp: React.ElementType = ({ className, children, letter, active, ...others }) => {
 
     return (
         <div className={className} {...others}>
@@ -48,5 +48,27 @@ const GuessSlotItem = styled(GuessSlotItemComp)`
     position: relative;
 `
 
+const GuessSlotItemDisplayControl: React.ElementType = ({active, delayedDisplay, ...others }) => {
+    const timeOutRef = useRef<ReturnType<typeof setTimeout>>()
+    const [isActive, setIsActive] = useState(active)
 
-export default GuessSlotItem
+    useEffect(() => {
+        if (typeof delayedDisplay === "number") {
+            timeOutRef.current = setTimeout(() => {
+                setIsActive(true)
+            }, delayedDisplay)
+        } else if (active !== isActive){
+            setIsActive(active)
+        }
+        return () => {
+            clearTimeout(timeOutRef.current)
+        }
+    }, [delayedDisplay, active])
+
+
+
+    return <GuessSlotItem active={isActive} {...others} />
+}
+
+
+export default GuessSlotItemDisplayControl

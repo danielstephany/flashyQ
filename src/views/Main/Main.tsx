@@ -15,7 +15,7 @@ const Box = styled.div`
 const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(5)
-    const [answer, setAnswer] = useState("Big  Bear")
+    const [answer, setAnswer] = useState("Big bear")
     const [open, setOpen] = useState(false)
 
     const handleClick = () => {
@@ -42,8 +42,16 @@ const Main = () => {
                     <textarea></textarea>
                 </Box>
             </Modal>
-            <GuessSlots wordString={answer} selections={selections}/>
-            <LetterList selections={selections} handleSelection={handleSelection} />
+            <GuessSlots 
+                wordString={answer} 
+                selections={selections}
+                isGameOver={health === 0}
+            />
+            <LetterList 
+                selections={selections}  
+                handleSelection={handleSelection} 
+                isGameOver={health === 0}
+            />
         </MainLayout>
     )
 }
