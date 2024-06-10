@@ -32,7 +32,7 @@ const HealthMeterComp: React.ElementType = ({ className, currentSlot }: iProps) 
     return (
         <div className={className}>
             <div className='health__bar'>
-                <HealthBar healthSlots={5} currentSlot={currentSlot} />
+                <HealthBar healthSlots={6} currentSlot={currentSlot} />
             </div>
             <div className="health__icon">
                 <HeartIcon pulse={pulse} pulseShrink={0 === currentSlot}/>

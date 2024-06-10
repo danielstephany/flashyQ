@@ -33,7 +33,7 @@ const LetterList = styled(LetterListComp)`
     align-items: flex-start;
     width: 100%;
     max-width: 1098px;
-    margin: 64px auto 36px;
+    margin: 0px auto 36px;
 ` as typeof LetterListComp
 
 export default LetterList

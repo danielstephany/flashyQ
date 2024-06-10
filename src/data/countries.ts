@@ -1,4 +1,4 @@
-const countries = [
+export const countries = [
     "Afghanistan",
     "land Islands",
     "Albania",
@@ -166,7 +166,7 @@ const countries = [
     "Oman",
     "Pakistan",
     "Palau",
-    "Palestinian Territory, Occupied",
+    "Palestinian Territory",
     "Panama",
     "Papua New Guinea",
     "Paraguay",
@@ -179,7 +179,7 @@ const countries = [
     "Qatar",
     "Reunion",
     "Romania",
-    "Russian Federation",
+    "Russia",
     "RWANDA",
     "Saint Helena",
     "Saint Kitts and Nevis",
