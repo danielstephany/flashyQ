@@ -7,7 +7,6 @@ import LetterList from './LetterList/LetterList.tsx'
 import MainHeader from '@src/components/modules/MainHeader.tsx'
 import { countries } from '@src/data/countries.ts'
 import GameMessages from "./GameMessages/index.tsx"
-import { array } from 'prop-types'
 
 const Box = styled.div`
     height: 500px;
