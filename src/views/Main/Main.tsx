@@ -1,23 +1,15 @@
 import React, { useState, useRef } from 'react'
 import MainLayout from '@src/components/layouts/MainLayout.tsx'
-import Modal from '@src/components/modules/Modal/index.tsx'
-import styled from 'styled-components'
 import GuessSlots from './GuessSlots/index.tsx'
 import LetterList from './LetterList/LetterList.tsx'
 import MainHeader from '@src/components/modules/MainHeader.tsx'
 import { countries } from '@src/data/countries.ts'
 import GameMessages from "./GameMessages/index.tsx"
-
-const Box = styled.div`
-    height: 500px;
-    width: 300px;
-    background: #fff;
-`
+import CategoriesModal from './CategoriesModal/index.tsx'
 
 const getRandomArrayItem = (array: string[]) =>  array[Math.floor(Math.random() * (array.length - 1))]
 
 const checkForWinner = (answerSet: Set<string>, selectionSet: Set<string>) => {    
-    debugger
     for (const letter of answerSet.values()) {
         if (!selectionSet.has(letter)) {
             return false
@@ -26,10 +18,8 @@ const checkForWinner = (answerSet: Set<string>, selectionSet: Set<string>) => {
     return true
 }
 
-const removeSpaces = (str: string) => Array.from(str.split(" ").map(word => word.trim()).join())
-
 const getAnswerSet = (str: string) => {
-    const res = new Set()
+    const res: Set<string> = new Set()
 
     for(let i = 0; i < str.length; i++){
         if(str[i] !== " ") res.add(str[i].toLowerCase())
@@ -47,8 +37,13 @@ const Main = () => {
     const [message, setMessage] = useState("")
     const answerSet = useRef(getAnswerSet(answer))
 
-    const handleClick = () => {
-        setOpen(!open)
+    const handleOpenModal = () => {
+        setOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setOpen(false)
+        console.log("test")
     }
 
     const handleSelection = (value: string) => (e: MouseEvent) => {
@@ -71,7 +66,12 @@ const Main = () => {
 
     return (
         <MainLayout 
-            topContent={<MainHeader currentSlot={health} />}
+            topContent={
+                <MainHeader 
+                    currentSlot={health} 
+                    handleOpenModal={handleOpenModal}
+                />
+            }
             middleContent={
                 <>
                     <GameMessages message={message}/>
@@ -89,14 +89,7 @@ const Main = () => {
                         handleSelection={handleSelection} 
                         isGameOver={health === 0}
                     />
-                    <Modal open={open}>
-                        <Box>
-                            <button onClick={handleClick}>Close</button>
-                            <button>test</button>
-                            <input />
-                            <textarea></textarea>
-                        </Box>
-                    </Modal>
+                    <CategoriesModal open={open} handleClose={handleCloseModal}/>
                 </>
             }
         >                        

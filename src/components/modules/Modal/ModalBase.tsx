@@ -31,6 +31,7 @@ const ModalBaseContent = styled(
 
 const ModalBaseComp: React.ElementType = ({
     children,
+    handleClose,
     mounted, 
     open, 
     others,
@@ -38,6 +39,7 @@ const ModalBaseComp: React.ElementType = ({
 }) => {
     const baseRef = useRef<HTMLDivElement | null>(null)
     const [animate, setAnimate] = useState(false)
+    const optionalProps: {[key:string]: any} = {}
 
     useEffect(() => {
 
@@ -57,9 +59,17 @@ const ModalBaseComp: React.ElementType = ({
         }
     }, [open])
 
+    if(handleClose){
+        optionalProps.onClick = handleClose
+    }
+
+    const stopPropagation = (e: MouseEvent) => {
+        e.stopPropagation()
+    }
+
     return (
-        <ModalBaseDiv tabIndex="-1" ref={baseRef} animate={animate} {...others}>
-            <ModalBaseContent role="dialog" animate={animate}>
+        <ModalBaseDiv tabIndex="-1" ref={baseRef} animate={animate} {...optionalProps} {...others}>
+            <ModalBaseContent role="dialog" animate={animate} onClick={stopPropagation}>
                 {children}
             </ModalBaseContent>
         </ModalBaseDiv>

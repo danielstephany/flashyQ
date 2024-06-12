@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const ButtonComp: React.ElementType = ({className, component, onMouseDown, onMouseUp, ...others}) => {
     const clickClassTimer = useRef < ReturnType<typeof setTimeout>>()
     const [clickClass, setClickClass] = useState("")
-    const Component = component || "Button"
+    const Component = component || "button"
     const classes = className + clickClass
 
     useEffect(() => () => {
@@ -28,7 +28,7 @@ const ButtonComp: React.ElementType = ({className, component, onMouseDown, onMou
     
 const Button = styled(ButtonComp)`
     box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0);
-    border-radius: 4px;
+    border-radius: 8px;
     display: inline-flex;
     background-image: linear-gradient(to bottom right, #ff6dfd, #8992fe);
     padding: 8px 24px;
@@ -38,6 +38,7 @@ const Button = styled(ButtonComp)`
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.4px;
     transition: box-shadow 0.1s linear;
+    cursor: pointer;
     &.button-clicked {
         box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.3);
     }

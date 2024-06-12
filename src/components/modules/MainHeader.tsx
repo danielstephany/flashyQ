@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import HealthMeter from '@src/components/modules/HealthMeter.tsx'
 import Button from "@src/components/controls/Button.tsx"
 
-const MainHeaderComp: React.ElementType = ({ className, currentSlot }) => {
+const MainHeaderComp: React.ElementType = ({ className, currentSlot, handleOpenModal }) => {
 
     return (
         <div className={className}>
             <div className='main-header__content'>
-                <Button component="a" href="#">Restart</Button>
+                <Button onClick={handleOpenModal}>Categories</Button>
                 <HealthMeter currentSlot={currentSlot} />
             </div>
         </div>

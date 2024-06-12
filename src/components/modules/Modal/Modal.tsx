@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import ModalBase from './ModalBase.tsx'
 
-const Modal: React.ElementType = ({ open, ...others }) => {
+const Modal: React.ElementType = ({ open, handleClose, ...others }) => {
     const modalBaseBody = useRef(document.querySelector("body"))
     const [mounted, setMounted] = useState(false)
 
@@ -17,9 +17,10 @@ const Modal: React.ElementType = ({ open, ...others }) => {
     return (createPortal(
         <ModalBase
             {...{
-                open,
+                open,            
                 mounted,
                 setMounted,
+                handleClose,
                 ...others
             }}
         />, modalBaseBody.current))
