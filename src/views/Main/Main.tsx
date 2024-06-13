@@ -4,6 +4,9 @@ import GuessSlots from './GuessSlots/index.tsx'
 import LetterList from './LetterList/LetterList.tsx'
 import MainHeader from '@src/components/modules/MainHeader.tsx'
 import { countries } from '@src/data/countries.ts'
+import { movies } from '@src/data/movies.ts'
+import { animals } from '@src/data/animals.ts'
+import { actors } from '@src/data/actors.ts'
 import GameMessages from "./GameMessages/index.tsx"
 import CategoriesModal from './CategoriesModal/index.tsx'
 
@@ -26,6 +29,13 @@ const getAnswerSet = (str: string) => {
     }
 
     return res
+}
+
+const categories = {
+    countries,
+    movies,
+    animals,
+    actors,
 }
 
 const Main = () => {
