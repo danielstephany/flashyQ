@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import GuessSlotItem from './GuessSlotItem.tsx'
@@ -29,9 +29,13 @@ interface iGuessSlotsProps {
 }
 
 const GuessSlots: React.ElementType = ({ wordString, isGameOver, selections }: iGuessSlotsProps) => {
-    const stringArray = useRef(parseWordString(wordString))
+    const [stringArray, setStringArray] = useState(parseWordString(wordString))
     const delayStep = 150
     let currentDelay: number = -delayStep;
+
+    useEffect(() => {
+        setStringArray(parseWordString(wordString))
+    }, [wordString])
 
     const buildGuessSlots = (word: string) => {        
         return (
@@ -59,7 +63,7 @@ const GuessSlots: React.ElementType = ({ wordString, isGameOver, selections }: i
 
     return (
         <GuessSlotsContainer>
-            {buildGuessSlotsSection(stringArray.current)}
+            {buildGuessSlotsSection(stringArray)}
         </GuessSlotsContainer>
     )
 }

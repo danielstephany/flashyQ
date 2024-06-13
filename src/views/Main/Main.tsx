@@ -4,6 +4,9 @@ import GuessSlots from './GuessSlots/index.tsx'
 import LetterList from './LetterList/LetterList.tsx'
 import MainHeader from '@src/components/modules/MainHeader.tsx'
 import { countries } from '@src/data/countries.ts'
+import { movies } from '@src/data/movies.ts'
+import { actors } from '@src/data/actors.ts'
+import { animals } from '@src/data/animals.ts'
 import GameMessages from "./GameMessages/index.tsx"
 import CategoriesModal from './CategoriesModal/index.tsx'
 
@@ -28,13 +31,21 @@ const getAnswerSet = (str: string) => {
     return res
 }
 
+const categoryOptions: {[key: string]: string[]} = { 
+    countries,
+    movies,
+    actors,
+    animals,
+}
+
 const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(6)
     const [answer, setAnswer] = useState(getRandomArrayItem(countries))
     const [open, setOpen] = useState(false)
     const [isWinner, setIsWinner] = useState(false)
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("Countries")
+    const [category, setCategory] = useState("Countries")
     const answerSet = useRef(getAnswerSet(answer))
 
     const handleOpenModal = () => {
@@ -43,7 +54,26 @@ const Main = () => {
 
     const handleCloseModal = () => {
         setOpen(false)
-        console.log("test")
+    }
+
+    const handleSetCatagory = (category: string) => () => {
+        const isRandom = category.toLowerCase() === "random"
+        const catagoryName = isRandom ? getRandomArrayItem(Object.keys(categoryOptions)) : category
+        const upperCaseName = catagoryName[0].toUpperCase() + catagoryName.substring(1, catagoryName.length)
+        const answer = getRandomArrayItem(categoryOptions[catagoryName.toLowerCase()])
+
+        setAnswer(answer)
+        answerSet.current = getAnswerSet(answer)
+        setCategory(isRandom ? "Random" : upperCaseName)
+        setMessage(isRandom ? "Random" : upperCaseName)
+        setOpen(false)
+        setSelections(new Set())
+        setHealth(6)
+        setIsWinner(false)
+    }
+
+    const handleReset = () => {
+        handleSetCatagory(category)()
     }
 
     const handleSelection = (value: string) => (e: MouseEvent) => {
@@ -56,7 +86,7 @@ const Main = () => {
         if (!selections.has(value)) {
             const updatedSelections = new Set([value, ...selections])
             setSelections(updatedSelections)
-            console.log(updatedSelections, answerSet.current)
+       
             if (checkForWinner(answerSet.current, updatedSelections)){
                 setIsWinner(true)
                 setMessage("Winner!")
@@ -70,6 +100,8 @@ const Main = () => {
                 <MainHeader 
                     currentSlot={health} 
                     handleOpenModal={handleOpenModal}
+                    gameEnded={health === 0 || isWinner}
+                    handleReset={handleReset}
                 />
             }
             middleContent={
@@ -89,7 +121,11 @@ const Main = () => {
                         handleSelection={handleSelection} 
                         isGameOver={health === 0}
                     />
-                    <CategoriesModal open={open} handleClose={handleCloseModal}/>
+                    <CategoriesModal 
+                        open={open} 
+                        handleClose={handleCloseModal}
+                        handleSetCatagory={handleSetCatagory}
+                    />
                 </>
             }
         >                        
