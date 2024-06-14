@@ -38,12 +38,13 @@ const GuessSlotItemComp: React.ElementType = ({ className, children, letter, act
 }
 
 const GuessSlotItem = styled(GuessSlotItemComp)`
+    flex-shrink: 2;
     border-radius: 8px;
     display: inline-flex;
     background-color: rgba(255, 255, 255, 0.2);
     background-color: rgba(23, 101, 253, 0.3);
-    min-height: 100px;
-    min-width: 100px;
+    height: 100px;
+    width: 100px;
     margin: 0 8px;
     position: relative;
 `

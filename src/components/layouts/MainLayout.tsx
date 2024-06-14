@@ -32,10 +32,13 @@ const MainLayout = styled(MainLayoutComp)`
     background-image: linear-gradient(180deg, #070b41, #576dde);
     min-height: 100vh;
     width: 100%;
+    max-width: 100%;
     .main-layout__main-content {
         display: flex;
         flex-direction: column;
         margin: auto;
+        max-width: 100%;
+        overflow: hidden;
     }
 ` as typeof MainLayoutComp
 

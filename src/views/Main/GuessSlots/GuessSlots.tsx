@@ -9,13 +9,15 @@ const GuessSlotsContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     min-height: 192px;
-    max-width: 1200px;
+    width: 1200px;
+    max-width: 100%;
     margin: 0 auto 32px;
 `
 
 const GuessSlotsSection = styled.div`
     display: inline-flex;
     margin: 16px;
+    max-width: 100%;
 `
 
 const parseWordString = (str: string) => {
