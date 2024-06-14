@@ -34,6 +34,24 @@ const LetterList = styled(LetterListComp)`
     width: 100%;
     max-width: 1098px;
     margin: 0px auto 36px;
+    @media (max-width: 1146px){
+        max-width: 954px;
+        ${LetterListButton} {
+            width: 90px;
+        }
+    }
+    @media (max-width: 1000px){
+        max-width: 810px;
+        ${LetterListButton} {
+            width: 74px;
+        }
+    }
+    @media (max-width: 840px){
+        max-width: 666px;
+        ${LetterListButton} {
+            width: 58px;
+        }
+    }
 ` as typeof LetterListComp
 
 export default LetterList
