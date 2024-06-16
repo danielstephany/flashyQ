@@ -34,22 +34,29 @@ const LetterList = styled(LetterListComp)`
     width: 100%;
     max-width: 1098px;
     margin: 0px auto 36px;
-    @media (max-width: 1146px){
-        max-width: 954px;
+    padding: 0 24px;
+    @media (max-width: 800px){
         ${LetterListButton} {
-            width: 90px;
+            aspect-ratio: 1/1.25;
         }
     }
-    @media (max-width: 1000px){
-        max-width: 810px;
+    @media (max-width: 650px){
+        padding: 0 16px;
         ${LetterListButton} {
-            width: 74px;
+            border-radius: 12px;
+            width: calc(11.111% - 12px);
+            margin: 0 6px 8px 6px;
+            font-size: 32px;
         }
     }
-    @media (max-width: 840px){
-        max-width: 666px;
+    @media (max-width: 525px){
+        padding: 0 8px;
+        margin-bottom: 16px;
+        justify-content: center;
         ${LetterListButton} {
-            width: 58px;
+            width: calc(14.285% - 8px);
+            margin: 0 4px 8px 4px;
+            font-size: 26px;
         }
     }
 ` as typeof LetterListComp

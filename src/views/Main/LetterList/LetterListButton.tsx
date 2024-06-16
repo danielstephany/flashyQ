@@ -17,8 +17,8 @@ const LetterListButton = styled(LetterListButtonComp)`
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    width: 106px;
-    height: 74px;
+    width: calc(11.111% - 16px);
+    aspect-ratio: 1.25 / 1;
     font-size: 42px;
     font-weight: 500;
     margin: 0 8px 16px;
