@@ -63,6 +63,7 @@ const LetterList = styled(LetterListComp)`
     @media (max-width: 525px){
         padding: 0 8px;
         margin: 0px auto 12px;
+        max-width: 426px;
         .letter-list__container {
             margin: 0 -4px;
             justify-content: center;

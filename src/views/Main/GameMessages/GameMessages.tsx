@@ -12,9 +12,8 @@ const MessagePill = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ff6dfd;
-    border-radius: 30px;
-    height: 60px;
-    padding: 0 32px;
+    border-radius: 32px;
+    padding: 6px 32px;
     font-family: "Poetsen One", sans-serif;
     color: #fff;
     font-size: 42px;
@@ -37,6 +36,17 @@ const GameMessages = styled(GameMessagesComp)`
     justify-content: center;
     height: 60px;
     margin: 0 0 16px;
+    @media (max-width: 870px){
+        ${MessagePill} {
+            font-size: 38px;
+        }
+    }
+    @media (max-width: 525px){
+        margin: 0 0 8px;
+        ${MessagePill} {
+            font-size: 24px;
+        }
+    }
 ` as typeof GameMessagesComp
 
 export default GameMessages
