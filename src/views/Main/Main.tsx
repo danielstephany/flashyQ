@@ -42,6 +42,7 @@ const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(6)
     const [answer, setAnswer] = useState(getRandomArrayItem(countries))
+    // const [answer, setAnswer] = useState("wdfojwijoj")
     const [open, setOpen] = useState(false)
     const [isWinner, setIsWinner] = useState(false)
     const [message, setMessage] = useState("Countries")

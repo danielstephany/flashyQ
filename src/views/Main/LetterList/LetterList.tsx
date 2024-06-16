@@ -23,18 +23,26 @@ const LetterListComp: React.ElementType = ({
      }
 
     return (
-        <div className={className} >{displayLetters()}</div>
+        <div className={className} >
+            <div className="letter-list__container">                
+                {displayLetters()}
+            </div>
+        </div>
     )
 }
 
 const LetterList = styled(LetterListComp)`
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
     width: 100%;
     max-width: 1098px;
     margin: 0px auto 36px;
-    padding: 0 24px;
+    padding: 0 24px;    
+    .letter-list__container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin: 0 -8px;
+        }
     @media (max-width: 800px){
         ${LetterListButton} {
             aspect-ratio: 1/1.25;
@@ -42,6 +50,9 @@ const LetterList = styled(LetterListComp)`
     }
     @media (max-width: 650px){
         padding: 0 16px;
+        .letter-list__container {
+            margin: 0 -6px;
+        }
         ${LetterListButton} {
             border-radius: 12px;
             width: calc(11.111% - 12px);
@@ -51,8 +62,11 @@ const LetterList = styled(LetterListComp)`
     }
     @media (max-width: 525px){
         padding: 0 8px;
-        margin-bottom: 16px;
-        justify-content: center;
+        margin: 0px auto 12px;
+        .letter-list__container {
+            margin: 0 -4px;
+            justify-content: center;
+        }
         ${LetterListButton} {
             width: calc(14.285% - 8px);
             margin: 0 4px 8px 4px;

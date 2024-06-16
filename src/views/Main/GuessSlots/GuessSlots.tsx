@@ -3,21 +3,40 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import GuessSlotItem from './GuessSlotItem.tsx'
 
+const GuessSlotsWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+    margin: 0 auto 32px;
+    max-width: 100%;
+    @media (max-width: 650px){
+        padding: 0 16px;
+    }
+    @media (max-width: 525px){
+        padding: 0 8px;
+    }
+`
+
 const GuessSlotsContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 192px;
     width: 1200px;
     max-width: 100%;
-    margin: 0 auto 32px;
+    margin: 0 -48px;
 `
 
 const GuessSlotsSection = styled.div`
     display: inline-flex;
-    margin: 16px;
+    margin: 24px;
     max-width: 100%;
+    @media (max-width: 870px){
+        margin: 16px;
+    }
+    @media (max-width: 525px){
+        margin: 12px;
+    }
 `
 
 const parseWordString = (str: string) => {
@@ -64,9 +83,11 @@ const GuessSlots: React.ElementType = ({ wordString, isGameOver, selections }: i
     }
 
     return (
-        <GuessSlotsContainer>
-            {buildGuessSlotsSection(stringArray)}
-        </GuessSlotsContainer>
+        <GuessSlotsWrapper>
+            <GuessSlotsContainer>
+                {buildGuessSlotsSection(stringArray)}
+            </GuessSlotsContainer>
+        </GuessSlotsWrapper>
     )
 }
 
