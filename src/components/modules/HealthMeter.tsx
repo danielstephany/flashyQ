@@ -54,8 +54,22 @@ const HealthMeter = styled(HealthMeterComp)`
         &__icon {
             display: flex;
             svg {                
-                hight: 60px;
+                height: 60px;
                 width: 60px;
+            }
+        }
+    }
+    @media(max-width: 760px){
+        .health {
+            &__bar {
+                margin-right: 8px;
+            }
+            &__icon {
+                margin-right: -6px;
+                svg {              
+                    height: 52px;
+                    width: 52px;
+                }
             }
         }
     }

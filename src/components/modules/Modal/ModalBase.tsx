@@ -5,7 +5,7 @@ import focusTrap from '@src/util/focusTrap.ts'
 const ModalBaseDiv = styled(
     React.forwardRef<HTMLDivElement, { animate?: boolean }>(({ animate = false, ...others }, ref) => <div ref={ref} {...others} />)
 )`
-    background-color: ${({ animate }) => animate ? "rgba(0, 0, 0, 0.25)" : "transparent"};
+    background-color: ${({ animate }) => animate ? "rgba(0, 0, 0, 0.4)" : "transparent"};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,8 @@ const ModalBaseContent = styled(
     transform: ${({ animate }) => animate ? "translateY(0px)" : "translateY(-100px)"};
     transition: opacity 0.3s ease, transform 0.3s ease;
     max-height: 100%;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 ` as React.ElementType
 
 
