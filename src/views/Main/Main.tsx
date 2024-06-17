@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import MainLayout from '@src/components/layouts/MainLayout.tsx'
 import GuessSlots from './GuessSlots/index.tsx'
 import LetterList from './LetterList/LetterList.tsx'
@@ -9,6 +9,7 @@ import { actors } from '@src/data/actors.ts'
 import { animals } from '@src/data/animals.ts'
 import GameMessages from "./GameMessages/index.tsx"
 import CategoriesModal from './CategoriesModal/index.tsx'
+import { LETTERS } from './Letters.ts'
 
 const getRandomArrayItem = (array: string[]) =>  array[Math.floor(Math.random() * (array.length - 1))]
 
@@ -42,7 +43,6 @@ const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(6)
     const [answer, setAnswer] = useState(getRandomArrayItem(countries))
-    // const [answer, setAnswer] = useState("wdfojwijoj")
     const [open, setOpen] = useState(false)
     const [isWinner, setIsWinner] = useState(false)
     const [message, setMessage] = useState("Countries")
@@ -77,23 +77,47 @@ const Main = () => {
         handleSetCatagory(category)()
     }
 
-    const handleSelection = (value: string) => (e: MouseEvent) => {
-        if (answer.toLowerCase().indexOf(value) < 0){
+    const updateHealth = (value: string) => {
+        if (answer.toLowerCase().indexOf(value) < 0) {
             setHealth(health - 1)
-            if(health - 1 === 0){
+            if (health - 1 === 0) {
                 setMessage("Game over")
             }
         }
+    }
+
+    const updateSelections = (value: string) => {
         if (!selections.has(value)) {
             const updatedSelections = new Set([value, ...selections])
             setSelections(updatedSelections)
-       
-            if (checkForWinner(answerSet.current, updatedSelections)){
+
+            if (checkForWinner(answerSet.current, updatedSelections)) {
                 setIsWinner(true)
                 setMessage("Winner!")
             }
         }
     }
+
+    const handleSelection = (value: string) => (e: MouseEvent) => {
+        updateHealth(value)
+        updateSelections(value)
+    }
+
+    const handleKeySelection = (e: KeyboardEvent) => {
+        const key = typeof e.key === "string" ? e.key.toLowerCase() : null;
+
+        if (key && LETTERS.indexOf(e.key) >= 0) {
+            updateHealth(key)
+            updateSelections(key)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeySelection)
+        return () => {
+            document.removeEventListener("keydown", handleKeySelection)
+        }
+    })
 
     return (
         <MainLayout 
