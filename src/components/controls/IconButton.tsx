@@ -34,7 +34,7 @@ const IconButton = styled(IconButtonComp)`
     border-radius: 40px;
     border: none;
     outline: none;
-    background-image: linear-gradient(to bottom right, #ff6dfd, #8992fe);
+    background-image: linear-gradient(to bottom right, #dc4fda, #8992fe);
     height: 40px;
     width: 40px;
     color: #fff;

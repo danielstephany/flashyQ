@@ -11,7 +11,7 @@ const MessagePill = styled.div`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #ff6dfd;
+    background-color: #dc4fda;
     border-radius: 32px;
     padding: 6px 32px;
     font-family: "Poetsen One", sans-serif;

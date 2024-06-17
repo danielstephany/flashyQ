@@ -11,7 +11,7 @@ const HeartIconComp: React.ElementType = ({ className, pulse, pulseShrink }: iPr
     return (
         <svg className={className} fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#ff6dfd" />
+                <stop offset="0%" stopColor="#dc4fda" />
                 {/* <stop offset="50%" stop-color="black" stop-opacity="0" /> */}
                 <stop offset="100%" stopColor="#8992fe" />
             </linearGradient>

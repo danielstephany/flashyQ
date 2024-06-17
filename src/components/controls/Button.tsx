@@ -33,7 +33,7 @@ const Button = styled(ButtonComp)`
     outline: none;
     display: inline-flex;
     justify-content: center;
-    background-image: linear-gradient(to bottom right, #ff6dfd, #8992fe);
+    background-image: linear-gradient(to bottom right, #dc4fda, #8992fe);
     width: ${({ fullWidth }) => fullWidth ? "100%" : "initial"};
     padding: 8px 24px;
     color: #fff;
