@@ -48,7 +48,7 @@ const IconButton = styled(IconButtonComp)`
         box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.3);
     }
     svg {
-        width: 22px;
+        min-width: 22px;
     }
 ` as typeof IconButtonComp
 

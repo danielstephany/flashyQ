@@ -31,6 +31,7 @@ const MainLayout = styled(MainLayoutComp)`
     flex-direction: column;
     background-image: linear-gradient(180deg, #070b41, #576dde);
     min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     max-width: 100%;
     .main-layout__main-content {

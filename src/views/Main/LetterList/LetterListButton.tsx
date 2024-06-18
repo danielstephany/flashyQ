@@ -10,6 +10,7 @@ const LetterListButtonComp: React.ElementType = ({className, ...others}) => {
 }
 
 const LetterListButton = styled(LetterListButtonComp)`
+    flex-shrink: 2;
     border: none;
     box-shadow: none;
     border-radius: 16px;

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import LetterListButton from "./LetterListButton.tsx"
+import { LETTERS } from '../Letters.ts'
 
 const LetterListComp: React.ElementType = ({ 
     className, 
@@ -8,10 +9,9 @@ const LetterListComp: React.ElementType = ({
     selections,
     isGameOver
 }) => {
-    const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
+    
      const displayLetters = () => {
-         return letters.map((letter, i) => {
+         return LETTERS.map((letter, i) => {
           return (
             <LetterListButton 
                 key={i}
@@ -71,7 +71,7 @@ const LetterList = styled(LetterListComp)`
         ${LetterListButton} {
             width: calc(14.285% - 8px);
             margin: 0 4px 8px 4px;
-            font-size: 26px;
+            font-size: 24px;
         }
     }
 ` as typeof LetterListComp
