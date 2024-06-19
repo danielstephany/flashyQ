@@ -18,7 +18,7 @@ const IntroModalBodyComp: React.ElementType = ({ className, handleClose, handleO
                 <IconButton onClick={handleClose} aria-label="close Modal"><X /></IconButton>
                 <div className='categories__grid--full'>
                     <h2>Word Guess!</h2>
-                    <h3>Thanks for choosing to play Word Guess, Learn how to play below</h3>
+                    <h3>Thank you for choosing to play Word Guess! Learn how to play below.</h3>
                     <p>
                         Step into Word Guess, a game where uncovering hidden words is your quest. You'll face rows of empty spaces, each waiting for the right letters to reveal the mystery.
                     </p>
