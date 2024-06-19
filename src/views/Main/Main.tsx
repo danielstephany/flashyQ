@@ -48,6 +48,7 @@ const Main = () => {
     const [message, setMessage] = useState("Countries")
     const [category, setCategory] = useState("Countries")
     const answerSet = useRef(getAnswerSet(answer))
+    const disableSelections = isWinner || health === 0
 
     const handleOpenModal = () => {
         setOpen(true)
@@ -78,7 +79,7 @@ const Main = () => {
     }
 
     const updateHealth = (value: string) => {
-        if (answer.toLowerCase().indexOf(value) < 0) {
+        if (answer.toLowerCase().indexOf(value) < 0 && !selections.has(value)) {
             setHealth(health - 1)
             if (health - 1 === 0) {
                 setMessage("Game over")
@@ -99,11 +100,13 @@ const Main = () => {
     }
 
     const handleSelection = (value: string) => (e: MouseEvent) => {
+        if (isWinner || health === 0) return 
         updateHealth(value)
         updateSelections(value)
     }
 
     const handleKeySelection = (e: KeyboardEvent) => {
+        if (isWinner || health === 0) return 
         const key = typeof e.key === "string" ? e.key.toLowerCase() : null;
 
         if (key && LETTERS.indexOf(e.key) >= 0) {
