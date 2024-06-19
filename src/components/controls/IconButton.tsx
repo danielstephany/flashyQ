@@ -50,6 +50,6 @@ const IconButton = styled(IconButtonComp)`
     svg {
         min-width: 22px;
     }
-` as typeof IconButtonComp
+` 
 
 export default IconButton
