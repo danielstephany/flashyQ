@@ -71,7 +71,7 @@ const LetterList = styled(LetterListComp)`
         ${LetterListButton} {
             width: calc(14.285% - 8px);
             margin: 0 4px 8px 4px;
-            font-size: 24px;
+            font-size: 22px;
         }
     }
 ` as typeof LetterListComp

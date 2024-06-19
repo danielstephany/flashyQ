@@ -48,8 +48,8 @@ const CategoriesModalBody = styled(CategoriesModalBodyComp)`
     }
     ${IconButton} {
         position: absolute;
-        top: 16px;
-        right: 16px;
+        top: 4px;
+        right: 4px;
         background-image: none;
         background-color: transparent;
         &.button-clicked {

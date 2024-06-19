@@ -9,7 +9,7 @@ module.exports = (env) => {
         mode: env.production ? "production" : "development",
         entry: './src/index.tsx',
         output: {
-            filename: '[name].bundle.js',
+            filename: '[name]-[hash].bundle.js',
             path: path.resolve(__dirname, 'dist'),
             clean: true,
         },

@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import HealthMeter from '@src/components/modules/HealthMeter.tsx'
 import Button from "@src/components/controls/Button.tsx"
 import IconButton from "@src/components/controls/IconButton.tsx"
-import {Menu,RefreshCw } from 'react-feather'
+import {Grid, RefreshCw } from 'react-feather'
 
 const MainHeaderComp: React.ElementType = ({ 
     className, 
@@ -21,7 +21,7 @@ const MainHeaderComp: React.ElementType = ({
                     <Button onClick={handleReset}>{gameEnded ? "Play Again" : "Reset"}</Button>
                 </div>
                 <div className='main-header__btn-container--mobile'>
-                    <IconButton onClick={handleOpenModal} aria-label="Categories"><Menu /></IconButton>
+                    <IconButton onClick={handleOpenModal} aria-label="Categories"><Grid /></IconButton>
                     <IconButton onClick={handleReset} aria-label={gameEnded ? "Play Again" : "Reset"}><RefreshCw /></IconButton>
                 </div>
                 <HealthMeter currentSlot={currentSlot} />
