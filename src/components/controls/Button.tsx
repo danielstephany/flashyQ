@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 
-const ButtonComp: React.ElementType = ({className, component, fullWidth, onMouseDown, onMouseUp, ...others}) => {
+const ButtonComp: React.ElementType = ({ className, component, noWrap, fullWidth, onMouseDown, onMouseUp, ...others}) => {
     const clickClassTimer = useRef < ReturnType<typeof setTimeout>>()
     const [clickClass, setClickClass] = useState("")
     const Component = component || "button"
@@ -35,6 +35,7 @@ const Button = styled(ButtonComp)`
     justify-content: center;
     background-image: linear-gradient(to bottom right, #dc4fda, #8992fe);
     width: ${({ fullWidth }) => fullWidth ? "100%" : "initial"};
+    ${({ noWrap }) => noWrap ? "white-space: nowrap;": ""}
     padding: 8px 24px;
     color: #fff;
     font-weight: 500;

@@ -21,7 +21,6 @@ const ModalBaseContent = styled(
     ({ animate = false, ...others }: { animate?: boolean }) => <div {...others} />
 )`
     opacity: ${({ animate }) => animate ? "1" : "0"};
-    display: flex;
     transform: ${({ animate }) => animate ? "translateY(0px)" : "translateY(-100px)"};
     transition: opacity 0.3s ease, transform 0.3s ease;
     max-height: 100%;
@@ -30,7 +29,7 @@ const ModalBaseContent = styled(
 ` as React.ElementType
 
 
-const ModalBaseComp: React.ElementType = ({
+const ModalBase: React.ElementType = ({
     children,
     handleClose,
     mounted, 
@@ -76,15 +75,5 @@ const ModalBaseComp: React.ElementType = ({
         </ModalBaseDiv>
     )
 }
-
-const ModalBase = styled(ModalBaseComp)`
-    background
-    display: flex;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    top: 0;
-`
 
 export default ModalBase

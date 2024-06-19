@@ -9,6 +9,7 @@ import { actors } from '@src/data/actors.ts'
 import { animals } from '@src/data/animals.ts'
 import GameMessages from "./GameMessages/index.tsx"
 import CategoriesModal from './CategoriesModal/index.tsx'
+import IntroModal from './IntroModal/index.tsx'
 import { LETTERS } from './Letters.ts'
 
 const getRandomArrayItem = (array: string[]) =>  array[Math.floor(Math.random() * (array.length - 1))]
@@ -43,19 +44,24 @@ const Main = () => {
     const [selections, setSelections] = useState<Set<string>>(new Set())
     const [health, setHealth] = useState(6)
     const [answer, setAnswer] = useState(getRandomArrayItem(countries))
-    const [open, setOpen] = useState(false)
+    const [catagoryModalopen, setCatagoryModalopen] = useState(false)
+    const [introModalOpen, setIntroModalOpen] = useState(true)
     const [isWinner, setIsWinner] = useState(false)
     const [message, setMessage] = useState("Countries")
     const [category, setCategory] = useState("Countries")
     const answerSet = useRef(getAnswerSet(answer))
     const disableSelections = isWinner || health === 0
 
-    const handleOpenModal = () => {
-        setOpen(true)
+    const handleOpenCatagoryModal = () => {
+        setCatagoryModalopen(true)
     }
 
     const handleCloseModal = () => {
-        setOpen(false)
+        setCatagoryModalopen(false)
+    }
+
+    const handleCloseIntroModal = () => {
+        setIntroModalOpen(false)
     }
 
     const handleSetCatagory = (category: string) => () => {
@@ -67,8 +73,8 @@ const Main = () => {
         setAnswer(answer)
         answerSet.current = getAnswerSet(answer)
         setCategory(isRandom ? "Random" : upperCaseName)
-        setMessage(isRandom ? "Random" : upperCaseName)
-        setOpen(false)
+        setMessage(upperCaseName)
+        setCatagoryModalopen(false)
         setSelections(new Set())
         setHealth(6)
         setIsWinner(false)
@@ -100,13 +106,13 @@ const Main = () => {
     }
 
     const handleSelection = (value: string) => (e: MouseEvent) => {
-        if (isWinner || health === 0) return 
+        if (disableSelections) return 
         updateHealth(value)
         updateSelections(value)
     }
 
     const handleKeySelection = (e: KeyboardEvent) => {
-        if (isWinner || health === 0) return 
+        if (disableSelections) return 
         const key = typeof e.key === "string" ? e.key.toLowerCase() : null;
 
         if (key && LETTERS.indexOf(e.key) >= 0) {
@@ -127,7 +133,7 @@ const Main = () => {
             topContent={
                 <MainHeader 
                     currentSlot={health} 
-                    handleOpenModal={handleOpenModal}
+                    handleOpenCatagoryModal={handleOpenCatagoryModal}
                     gameEnded={health === 0 || isWinner}
                     handleReset={handleReset}
                 />
@@ -150,9 +156,14 @@ const Main = () => {
                         isGameOver={health === 0}
                     />
                     <CategoriesModal 
-                        open={open} 
+                        open={catagoryModalopen} 
                         handleClose={handleCloseModal}
                         handleSetCatagory={handleSetCatagory}
+                    />
+                    <IntroModal 
+                        open={introModalOpen} 
+                        handleClose={handleCloseIntroModal}
+                        handleOpenCatagoryModal={handleOpenCatagoryModal}
                     />
                 </>
             }

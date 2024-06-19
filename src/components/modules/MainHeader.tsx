@@ -9,7 +9,7 @@ const MainHeaderComp: React.ElementType = ({
     className, 
     currentSlot, 
     gameEnded, 
-    handleOpenModal,
+    handleOpenCatagoryModal,
     handleReset
 }) => {
 
@@ -17,11 +17,11 @@ const MainHeaderComp: React.ElementType = ({
         <div className={className}>
             <div className='main-header__content'>
                 <div className='main-header__btn-container'>
-                    <Button onClick={handleOpenModal}>Categories</Button>
+                    <Button onClick={handleOpenCatagoryModal}>Categories</Button>
                     <Button onClick={handleReset}>{gameEnded ? "Play Again" : "Reset"}</Button>
                 </div>
                 <div className='main-header__btn-container--mobile'>
-                    <IconButton onClick={handleOpenModal} aria-label="Categories"><Grid /></IconButton>
+                    <IconButton onClick={handleOpenCatagoryModal} aria-label="Categories"><Grid /></IconButton>
                     <IconButton onClick={handleReset} aria-label={gameEnded ? "Play Again" : "Reset"}><RefreshCw /></IconButton>
                 </div>
                 <HealthMeter currentSlot={currentSlot} />
